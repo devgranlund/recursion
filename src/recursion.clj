@@ -33,7 +33,16 @@
   )
 
 (defn seq-max [seq-1 seq-2]
-  [:-])
+  (if (< (count seq-1) (count seq-2))
+    seq-2
+    (if (< (count seq-2) (count seq-1))
+      seq-1
+      (if (<= (compare seq-1 seq-2) 0)
+        seq-2
+        seq-1
+        )
+  )))
+
 
 (defn longest-sequence [a-seq]
   [:-])
