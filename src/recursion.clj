@@ -3,9 +3,11 @@
 (defn product [coll]
   (if (empty? coll)
     1
-    (* (first coll) (product (rest (coll))))
-    )
-  )
+    (if (> (count coll) 1)
+      (* (first coll) (product (rest coll)))
+      (first coll)
+      )
+  ))
 
 (defn singleton? [coll]
   :-)
