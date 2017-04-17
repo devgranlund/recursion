@@ -10,7 +10,8 @@
   ))
 
 (defn singleton? [coll]
-  :-)
+  (== 1 (count coll))
+  )
 
 (defn my-last [coll]
   :-)
