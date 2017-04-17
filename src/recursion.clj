@@ -14,7 +14,11 @@
   )
 
 (defn my-last [coll]
-  :-)
+  (if (singleton? coll)
+    (first coll)
+    (my-last (rest coll))
+    )
+  )
 
 (defn max-element [a-seq]
   :-)
