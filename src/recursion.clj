@@ -74,7 +74,10 @@
     ))
 
 (defn my-take-while [pred? a-seq]
-  [:-])
+  (if (empty? a-seq)
+    a-seq
+
+    ))
 
 (defn my-drop-while [pred? a-seq]
   [:-])
