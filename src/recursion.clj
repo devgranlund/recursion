@@ -102,7 +102,16 @@
        )))
 
 (defn seq= [a-seq b-seq]
-  :-)
+  (cond
+    (or
+      (and (empty? a-seq) (not (empty? b-seq)))
+      (and (empty? b-seq) (not (empty? a-seq)))) false
+    (and (empty? a-seq) (empty? b-seq)) true
+    (== (first a-seq) (first b-seq))
+      (seq= (rest a-seq) (rest b-seq))
+    (not (== (first a-seq) (first b-seq)))
+      false
+    ))
 
 (defn my-map [f seq-1 seq-2]
   [:-])
