@@ -75,8 +75,8 @@
 
 (defn my-take-while [pred? a-seq]
   (if (empty? a-seq)
-    a-seq)
-    (let [firzt (first a-seq)
+      a-seq
+  (let [firzt (first a-seq)
           rezt (rest a-seq)]
     (if (empty? rezt)
       (if (pred? firzt) (list firzt) '())
@@ -84,10 +84,22 @@
       (if (pred? (first rezt))
         (cons firzt (my-take-while pred? rezt))
         (list firzt))
-      '()))))
+      '())))))
 
+; Drop elements until pred? returns false
 (defn my-drop-while [pred? a-seq]
-  [:-])
+   (let [firzt (first a-seq)
+          rezt (rest a-seq)]
+     (cond
+       (empty? a-seq)
+         a-seq
+       (not (pred? firzt))
+         a-seq
+       (empty? rezt)
+         rezt
+       :else
+         (my-drop-while pred? rezt)
+       )))
 
 (defn seq= [a-seq b-seq]
   :-)
