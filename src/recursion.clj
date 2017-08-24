@@ -120,10 +120,15 @@
   ))
 
 (defn power [n k]
-  :-)
+  (cond
+    (== k 1) n
+    (> k 1)
+      (* n (power n (dec k)))
+    (== k 0) 1
+  ))
 
 (defn fib [n]
-  :-)
+  )
 
 (defn my-repeat [how-many-times what-to-repeat]
   [:-])
