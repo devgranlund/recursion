@@ -128,7 +128,12 @@
   ))
 
 (defn fib [n]
-  )
+  (cond
+    (== n 0) 0
+    (== n 1) 1
+    :else
+      (+ (fib (dec n)) (fib (dec (dec n))))
+  ))
 
 (defn my-repeat [how-many-times what-to-repeat]
   [:-])
