@@ -142,7 +142,11 @@
     ))
 
 (defn my-range [up-to]
-  [:-])
+  (cond
+    (== up-to 0) '()
+    (== up-to 1) (cons 0 '())
+    (> up-to 1) (cons (dec up-to) (my-range (dec up-to)))
+    ))
 
 (defn tails [a-seq]
   [:-])
