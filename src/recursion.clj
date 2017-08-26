@@ -168,7 +168,12 @@
   ))))
 
 (defn rotations [a-seq]
-  [:-])
+  (let [[firzt & rezt] a-seq]
+    (if (empty? a-seq)
+      (list '())
+      (if rezt
+        (cons (seq a-seq) (conj rezt firzt))
+  ))))
 
 (defn my-frequencies-helper [freqs a-seq]
   [:-])
