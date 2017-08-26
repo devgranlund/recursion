@@ -157,8 +157,15 @@
       (cons (seq a-seq) (tails rezt))
   )))
 
-(defn inits [a-seq]
-  [:-])
+  (defn inits [a-seq]
+    (let [[lazt & rezt] (reverse a-seq)
+          c (seq a-seq)]
+      (if rezt
+        (cons c (inits (reverse rezt)))
+        (if lazt
+          (list (list lazt) '())
+          (list '())
+  ))))
 
 (defn rotations [a-seq]
   [:-])
