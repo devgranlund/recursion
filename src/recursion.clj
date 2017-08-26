@@ -149,7 +149,13 @@
     ))
 
 (defn tails [a-seq]
-  [:-])
+  (let [[_ & rezt] a-seq]
+    (if (nil? rezt)
+      (if (empty? a-seq)
+        (list '())
+        (list (seq a-seq) '()))
+      (cons (seq a-seq) (tails rezt))
+  )))
 
 (defn inits [a-seq]
   [:-])
