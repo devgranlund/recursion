@@ -206,11 +206,11 @@
 (defn my-take [n coll]
   (cond
     (empty? coll)
-      nil
+      []
     (> n 0)
       (concat (list (first coll)) (my-take (- n 1) (rest coll)))
     (= n 0)
-      nil
+      []
     (< n 0)
       nil
   ))
@@ -229,7 +229,9 @@
   )
 
 (defn halve [a-seq]
-  [:-])
+  (let [n (int (/ (count a-seq) 2))]
+    [(my-take n a-seq) (my-drop n a-seq)]
+  ))
 
 (defn seq-merge [a-seq b-seq]
   [:-])
