@@ -157,6 +157,13 @@
       (cons (seq a-seq) (tails rezt))
   )))
 
+; second version of tails
+(defn my-tails [a-seq]
+  (if (empty? a-seq)
+    '(())
+   (cons (reverse (into () a-seq)) (tails (rest a-seq)))))
+
+
   (defn inits [a-seq]
     (let [[lazt & rezt] (reverse a-seq)
           c (seq a-seq)]
@@ -167,19 +174,28 @@
           (list '())
   ))))
 
+; second version of inits
+(defn my-inits [a-seq]
+  (map reverse (my-tails (reverse a-seq)))
+  )
+
 (defn rotations [a-seq]
-  (let [[firzt & rezt] a-seq]
-    (if (empty? a-seq)
-      (list '())
-      (if rezt
-        (cons (seq a-seq) (conj rezt firzt))
-  ))))
+  (if (empty? a-seq)
+    '(())
+    (rest (map concat (reverse (my-tails a-seq)) (my-inits a-seq))))
+  )
 
 (defn my-frequencies-helper [freqs a-seq]
-  [:-])
+  (let [[item & rezt] a-seq]
+    (if (empty? a-seq)
+      freqs
+      (if (= nil (get freqs item))
+        (my-frequencies-helper (assoc freqs item 1) rezt)
+        (my-frequencies-helper (assoc freqs item (+ (get freqs item) 1)) rezt)
+  ))))
 
 (defn my-frequencies [a-seq]
-  [:-])
+  (my-frequencies-helper {} a-seq))
 
 (defn un-frequencies [a-map]
   [:-])
