@@ -204,7 +204,16 @@
   ))
 
 (defn my-take [n coll]
-  [:-])
+  (cond
+    (empty? coll)
+      nil
+    (> n 0)
+      (concat (list (first coll)) (my-take (- n 1) (rest coll)))
+    (= n 0)
+      nil
+    (< n 0)
+      nil
+  ))
 
 (defn my-drop [n coll]
   [:-])
