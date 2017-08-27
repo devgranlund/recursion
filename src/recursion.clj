@@ -216,7 +216,17 @@
   ))
 
 (defn my-drop [n coll]
-  [:-])
+  (cond
+    (empty? coll)
+      '()
+    (= n 0)
+      coll
+    (> n 0)
+      (my-drop (- n 1) (rest coll))
+    (< n 1)
+      nil
+    )
+  )
 
 (defn halve [a-seq]
   [:-])
