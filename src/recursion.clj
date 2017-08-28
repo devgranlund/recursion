@@ -234,7 +234,14 @@
   ))
 
 (defn seq-merge [a-seq b-seq]
-  [:-])
+  (if (empty? a-seq)
+    b-seq
+    (if (empty? b-seq)
+      a-seq
+      (if (> (first a-seq) (first b-seq))
+        (cons (first b-seq) (seq-merge a-seq (rest b-seq)))
+        (cons (first a-seq) (seq-merge b-seq (rest a-seq)))
+  ))))
 
 (defn merge-sort [a-seq]
   [:-])
