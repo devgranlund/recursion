@@ -244,7 +244,10 @@
   ))))
 
 (defn merge-sort [a-seq]
-  [:-])
+  (if (or (= (count a-seq) 0) (= (count a-seq) 1))
+    a-seq
+    (seq-merge (merge-sort (first (halve a-seq))) (merge-sort (first (rest (halve a-seq)))))
+    ))
 
 (defn split-into-monotonics [a-seq]
   [:-])
